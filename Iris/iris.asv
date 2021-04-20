@@ -1,0 +1,21 @@
+%% Load data
+
+setosa_data = importdata('class_1');
+versicolor_data = importdata('class_2');
+virginica_data = importdata('class_3');
+
+% Use first 30 samples for training, last 20 for testing
+
+n_training = 30;
+n_testing = 20;
+
+set_training = setosa_data(1:n_training, :);
+ver_training = versicolor_data(1:n_training, :);
+vir_training = virginica_data(1:n_training, :);
+training_data = [set_training, ver_training, vir_training];
+
+set_testing = setosa_data(1:n_testing, :);
+ver_testing = versicolor_data(1:n_testing, :);
+vir_testing = virginica_data(1:n_testing, :);
+testing_data = [set_testing, ver_training, vir_training];
+
