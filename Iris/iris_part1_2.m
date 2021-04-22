@@ -36,9 +36,9 @@ x = zeros(D+1, C*n_training);
 
 
 %% Training
-n_iter = 3000;
-alpha = 0.01;
-k = 0;
+n_iter = 3000;                  % Number of iterations
+alpha = 0.005;                  % Step length
+i = 1;
 MSE_arr = zeros(n_iter, 1);
 
 while i < n_iter

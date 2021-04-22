@@ -36,9 +36,9 @@ x = zeros(D+1, C*n_training);
 
 
 %% Training
-n_iter = 3000;
-alpha = 0.01;
-k = 0;
+n_iter = 3000;                  % Number of iterations
+alpha = 0.001;                  % Step length
+i = 1;
 MSE_arr = zeros(1, n_iter);
 
 while i < n_iter
@@ -61,14 +61,14 @@ while i < n_iter
         MSE = MSE + .5*(g_k - t_k).'*(g_k - t_k);
         grad = grad + grad_MSE(g_k, t_k, x_k);
     end
-    
+
     MSE_arr(i) = MSE;
     W = W - alpha*grad;
     i = i + 1;
 end
 
 % Save MSE array for plotting for different choices of alpha
-save MSE_alpha01 MSE_arr          
+save MSE_alpha001 MSE_arr          
 
 %% Testing and confusion matrix
 
@@ -108,6 +108,7 @@ for k = 1:C*n_training
         counter = counter + 1;
     end
 end
+
 
 
 %% Error rate
