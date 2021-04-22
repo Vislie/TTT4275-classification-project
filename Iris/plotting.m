@@ -70,3 +70,15 @@ subplot(3, 1, 3);
 histogram(virginica_data(:, 4), 20);
 xlim([0 2.6]);
 sgtitle('Petal widths');
+
+
+%% MSE plot
+T = 1:size(MSE_arr, 2);
+figure(7); hold on;
+plot(T, MSE_arr01); 
+plot(T, MSE_arr005);
+plot(T, MSE_arr001);
+legend('\alpha = 0.01', '\alpha = 0.005', '\alpha = 0.001');
+xlabel('Iteration');
+ylabel('MSE');
+

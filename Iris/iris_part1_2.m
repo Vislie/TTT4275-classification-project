@@ -1,5 +1,3 @@
-clear all;
-
 %%%%%%%%%%%%%%%%%%%%%%% First part of Iris task %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% Using last 30 samples for training, first 20 for testing %%%%%%%%
 
@@ -41,11 +39,13 @@ x = zeros(D+1, C*n_training);
 n_iter = 3000;
 alpha = 0.01;
 k = 0;
+MSE_arr = zeros(n_iter, 1);
 
 while i < n_iter
     grad = 0;
     MSE = 0;
     counter = 1;
+    MSE_arr = zeros(n_iter, 1);
     
     for k = 1:C*n_training
         
@@ -63,6 +63,7 @@ while i < n_iter
         grad = grad + grad_MSE(g_k, t_k, x_k);
     end
     
+    MSE_arr(i) = MSE;
     W = W - alpha*grad;
     i = i + 1;
 end

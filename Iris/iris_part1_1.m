@@ -1,5 +1,3 @@
-clear all;
-
 %%%%%%%%%%%%%%%%%%%%%%% First part of Iris task %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% Using first 30 samples for training, last 20 for testing %%%%%%%%
 
@@ -41,6 +39,7 @@ x = zeros(D+1, C*n_training);
 n_iter = 3000;
 alpha = 0.01;
 k = 0;
+MSE_arr = zeros(1, n_iter);
 
 while i < n_iter
     grad = 0;
@@ -63,10 +62,13 @@ while i < n_iter
         grad = grad + grad_MSE(g_k, t_k, x_k);
     end
     
+    MSE_arr(i) = MSE;
     W = W - alpha*grad;
     i = i + 1;
 end
 
+% Save MSE array for plotting for different choices of alpha
+save MSE_alpha01 MSE_arr          
 
 %% Testing and confusion matrix
 
