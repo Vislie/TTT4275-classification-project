@@ -37,7 +37,7 @@ x = zeros(D+1, C*n_training);
 
 %% Training
 n_iter = 3000;                  % Number of iterations
-alpha = 0.001;                  % Step length
+alpha = 0.005;                  % Step length
 i = 1;
 MSE_arr = zeros(1, n_iter);
 
@@ -68,7 +68,7 @@ while i < n_iter
 end
 
 % Save MSE array for plotting for different choices of alpha
-save MSE_alpha001 MSE_arr          
+save MSE_alpha005 MSE_arr          
 
 %% Testing and confusion matrix
 
