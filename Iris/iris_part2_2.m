@@ -1,14 +1,14 @@
 clear all;
 
-%%%%%%%%%%%%%%%%%%%%%%% First part of Iris task %%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%% Using first 30 samples for training, last 20 for testing %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Second part of Iris task %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% Removed features: Sepal width, Sepal length %%%%%%%%%%%%%%
 
 %% Constants
 
 n_training = 30;    % Use 30 samples for training
 n_testing = 20;     % Use 20 samples for testing
 C = 3;              % We have 3 classes
-D = 4;              % Number of features
+D = 2;              % Number of features
 
 
 %% Load data
@@ -16,6 +16,17 @@ D = 4;              % Number of features
 setosa_data = load('class_1', '-ascii');        % Setosa dataset
 versicolor_data = load('class_2', '-ascii');    % Versicolor dataset
 virginica_data = load('class_3', '-ascii');     % Virginica dataset
+
+% Feature indexes (columns)
+sep_length_col = 1;
+sep_width_col = 2;
+pet_length_col = 3;
+pet_width_col = 4;
+
+% Delete columns of removed features
+setosa_data(:, [sep_length_col, sep_width_col]) = [];
+versicolor_data(:, [sep_length_col, sep_width_col]) = [];
+virginica_data(:, [sep_length_col, sep_width_col]) = [];
 
 % Use 30 first samples for training, 20 last for testing
 set_training = setosa_data(1:n_training, :);
